@@ -1,11 +1,17 @@
 const { app } = require("electron");
+const sqlite = require("sqlite3").verbose();
 const { createWindow } = require("./main");
+let db = new sqlite.Database(__dirname + "/database", console.log);
 
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
-  // eslint-disable-line global-require
   app.quit();
 }
+
+db.serialize(() => {
+  db.each("SELECT rowid AS id, info FROM lorem", function (err, row) {
+    console.log(row.id + ": " + row.info);
+  });
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
