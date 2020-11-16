@@ -9,7 +9,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "rebuild":"electron-rebuild -f -w sqlite3 ",
+    "rebuild": "electron-rebuild -w sqlite3 -p ",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],
@@ -47,6 +47,8 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "sequelize": "^6.3.5",
+    
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {

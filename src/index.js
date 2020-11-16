@@ -1,17 +1,22 @@
 const { app } = require("electron");
-const sqlite = require("sqlite3").verbose();
 const { createWindow } = require("./main");
-let db = new sqlite.Database(__dirname + "/database", console.log);
+const db = require("./database");
+const {
+  guardarProducto,
+  actualizarProducto,
+  obtenerProductos,
+  obtenerProductoPorId,
+} = require("./controllers/productos.controller");
+
+db.sync({ force: false })
+  .then((msj) => {
+    console.log(msj);
+  })
+  .catch(console.log());
 
 if (require("electron-squirrel-startup")) {
   app.quit();
 }
-
-db.serialize(() => {
-  db.each("SELECT rowid AS id, info FROM lorem", function (err, row) {
-    console.log(row.id + ": " + row.info);
-  });
-});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
