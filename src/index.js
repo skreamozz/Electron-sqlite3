@@ -1,18 +1,11 @@
 const { app } = require("electron");
 const { createWindow } = require("./main");
 const db = require("./database");
-const {
-  guardarProducto,
-  actualizarProducto,
-  obtenerProductos,
-  obtenerProductoPorId,
-} = require("./controllers/productos.controller");
-
 db.sync({ force: false })
   .then((msj) => {
     console.log(msj);
   })
-  .catch(console.log());
+  .catch(console.log);
 
 if (require("electron-squirrel-startup")) {
   app.quit();
