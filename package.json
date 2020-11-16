@@ -1,8 +1,8 @@
 {
-  "name": "second-app",
-  "productName": "second-app",
-  "version": "1.0.0",
-  "description": "My Electron application description",
+  "name": "Electron-sqlite3",
+  "productName": "ContableApp",
+  "version": "0.0.1",
+  "description": "Simple aplicación usando Electron y sqlite3",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -25,7 +25,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "second_app"
+            "name": "ContableApp"
           }
         },
         {
